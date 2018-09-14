@@ -1,4 +1,4 @@
-package com.eugene.algorithm;
+package com.eugene.datastructure;
 
 public class LinkedList<E> {
 
@@ -178,4 +178,7 @@ public class LinkedList<E> {
         }
     }
 
+    public int getSize() {
+        return size;
+    }
 }

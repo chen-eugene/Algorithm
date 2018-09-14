@@ -1,6 +1,11 @@
-package com.eugene.algorithm;
+package com.eugene.datastructure;
 
-public class Quene<E> {
+/**
+ * 循环数组实现队列
+ *
+ * @param <E>
+ */
+public class ArrayQueue<E> {
 
     private int DEF_CAPACITY = 10;
 
@@ -13,7 +18,7 @@ public class Quene<E> {
      */
     private int head, tail = -1;
 
-    public void add(E e) {
+    public void push(E e) {
 
         if (values.length == size) {
 
@@ -25,10 +30,9 @@ public class Quene<E> {
             values = temp;
         }
 
-        tail = (tail++ % values.length);
+        tail = (tail + 1) % values.length;
         values[tail] = e;
         size++;
-
     }
 
     public E poll() {
@@ -39,12 +43,15 @@ public class Quene<E> {
         E e = (E) values[head];
         values[head] = null;
 
-        head = head++ % values.length;
+        //head指针后移，并对数组length取模
+        head = (head + 1) % values.length;
 
-        size++;
+        size--;
 
         return e;
     }
 
-
+    public int getSize() {
+        return size;
+    }
 }

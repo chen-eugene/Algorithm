@@ -1,11 +1,14 @@
-package com.eugene.algorithm;
+package com.eugene;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Stack;
+import com.eugene.algorithm.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,5 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
     }
+
+
+
+
 }
