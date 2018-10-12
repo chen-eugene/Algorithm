@@ -29,3 +29,26 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+
+task last << { println 'task last' }
+task rirst << { println 'task first' }
+
+task printVersion(dependsOn: [last, rirst]) {
+    group = 'versioning'
+    description = 'Print project version'
+
+
+    doLast { logger.quiet "Version:$version" }
+
+}
+task doStr << { println 'doStr' }
+doStr.dependsOn('last', 'rirst')
+
+
+
+
+
+
+
+

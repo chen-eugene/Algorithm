@@ -60,6 +60,23 @@ public class SortTest {
         print(arr);
     }
 
+    @Test
+    public void countingSortTest() {
+
+        Sort.countingSort(arr);
+
+        print(arr);
+    }
+
+
+    @Test
+    public void bucketSortTest() {
+
+        Sort.bucketSort(arr);
+
+        print(arr);
+    }
+
 
     private void print(int[] arr) {
 

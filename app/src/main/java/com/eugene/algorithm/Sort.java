@@ -253,6 +253,59 @@ public class Sort {
         }
     }
 
+    /**
+     * 桶排序
+     *
+     * @param arr
+     */
+    public static void bucketSort(int[] arr) {
+
+        if (arr.length <= 1) return;
+
+        //桶的深度，当桶的深度为1时，相当于计数排序
+        int bucketSize = 5;
+
+        int min = 0, max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (min > arr[i]) {
+                min = arr[i];
+            }
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+        }
+
+        //计算出桶的数量
+        int bucketCount = (int) (Math.floor((max - min) / bucketSize) + 1);
+        int[][] buckets = new int[bucketCount][0];
+
+        // 利用映射函数将数据分配到各个桶中
+        for (int j = 0; j < arr.length; j++) {
+            int index = (int) Math.floor(arr[j] / bucketSize);
+            buckets[index] = append(buckets[index], arr[j]);
+        }
+
+        //遍历所有的桶，对每个桶的数据进行排序
+        int sortIndex = 0;
+        for (int[] bucket : buckets) {
+            if (bucket.length < 1)
+                continue;
+
+            insertionSort02(bucket);
+
+            //排序之后取出每个桶的元素
+            for (int value : bucket) {
+                arr[sortIndex++] = value;
+            }
+        }
+    }
+
+    private static int[] append(int[] arr, int value) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = value;
+        return arr;
+    }
+
 
     /**
      * 基数排序适用于：
