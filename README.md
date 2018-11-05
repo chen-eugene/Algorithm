@@ -19,7 +19,7 @@
  - 非顺序存储结构(链式存储结构)：非顺序存储结构借助指示元素存储位置的指针(pointer)来表示数据元素之间的逻辑关系。
 
 
-**[线性表]()**
+**[线性表](https://github.com/chen-eugene/Algorithm/blob/master/file/%E7%BA%BF%E6%80%A7%E8%A1%A8.md)**
 
 **[树]()**
   
