@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.eugene.algorithm.R;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

@@ -1,13 +1,16 @@
-package com.eugene.datastructure.linkedlist;
+package com.eugene.datastructure.linkedlist.singlelinked;
+
+import com.eugene.datastructure.linkedlist.ILinkedList;
 
 /**
  * 不含独立头结点,不含尾部指针
+ * 头结点就是第一个结点
  */
 public class SingleLinkedList<T> implements ILinkedList<T> {
     /**
      * 带数据头结点
      */
-    private Node<T> head;
+    private SNode<T> head;
 
     private int length = 0;
 
@@ -27,7 +30,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             return null;
 
         int count = 0;
-        Node p = head;
+        SNode p = head;
         //找到对应索引的结点，如果index大于链表长度，返回null
         while (p != null && count < index) {
             p = p.next;
@@ -46,7 +49,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             return null;
 
         int count = 0;
-        Node p = head;
+        SNode p = head;
         //先查找到index位置上的结点
         while (p != null && count < index) {
             p = p.next;
@@ -68,11 +71,11 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
 
         //在头部插入
         if (head == null || index <= 0) {
-            head = new Node<T>(data, null);
+            head = new SNode<T>(data, null);
         } else {
             //在尾部或中间插入
             int count = 0;
-            Node p = head;
+            SNode p = head;
             //当index大于链表长度时，则在尾部插入
             while (p.next != null && count < index) {
                 p = p.next;
@@ -80,7 +83,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             }
 
             //尾部添加和中间插入属于同种情况,毕竟当front为尾部结点时front.next=null
-            p.next = new Node(data, p.next);
+            p.next = new SNode(data, p.next);
         }
 
         return true;
@@ -104,7 +107,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             head = head.next;
         } else {
             int count = 0;
-            Node p = head;
+            SNode p = head;
             //找到index的前一个结点
             while (p.next != null && count < index - 1) {
                 p = p.next;
@@ -112,7 +115,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             }
 
             //获取到要删除的结点
-            Node r = p.next;
+            SNode r = p.next;
 
             if (r != null) {
                 old = (T) r.data;
@@ -137,8 +140,8 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
             head = head.next;
         } else {
 
-            Node p = head;
-            Node q = p.next;
+            SNode p = head;
+            SNode q = p.next;
             //查找所有数据相同的结点并删除
             while (q != null) {
                 if (q.data.equals(data)) {
@@ -166,7 +169,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
         if (head == null || data == null)
             return false;
 
-        Node p = head;
+        SNode p = head;
         //从头部依次进行判断
         while (p != null) {
             if (p.data.equals(data))
@@ -184,7 +187,7 @@ public class SingleLinkedList<T> implements ILinkedList<T> {
         if (this.head == null)
             this.head = list.head;
         else {
-            Node<T> pre = this.head;
+            SNode<T> pre = this.head;
             while (pre.next != null)
                 pre = pre.next;
             pre.next = list.head;
