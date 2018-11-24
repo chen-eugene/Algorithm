@@ -1,4 +1,4 @@
-package com.eugene.algorithm;
+package com.eugene.datastructure;
 
 public class LinkedList<E> {
 
