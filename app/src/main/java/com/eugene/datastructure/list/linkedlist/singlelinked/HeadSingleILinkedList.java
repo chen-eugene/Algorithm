@@ -1,6 +1,6 @@
-package com.eugene.datastructure.linkedlist.singlelinked;
+package com.eugene.datastructure.list.linkedlist.singlelinked;
 
-import com.eugene.datastructure.linkedlist.ILinkedList;
+import com.eugene.datastructure.list.linkedlist.ILinkedList;
 
 /**
  * 带独立头结点并含有尾指针的链表

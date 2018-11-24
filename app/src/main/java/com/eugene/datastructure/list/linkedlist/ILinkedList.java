@@ -1,4 +1,4 @@
-package com.eugene.datastructure.linkedlist;
+package com.eugene.datastructure.list.linkedlist;
 
 /**
  * 链表顶级接口

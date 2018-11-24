@@ -1,4 +1,4 @@
-package com.eugene.datastructure.seqlist;
+package com.eugene.datastructure.list.seqlist;
 
 /**
  * 顺序表顶层接口

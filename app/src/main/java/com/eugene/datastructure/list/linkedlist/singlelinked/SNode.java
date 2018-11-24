@@ -1,4 +1,4 @@
-package com.eugene.datastructure.linkedlist.singlelinked;
+package com.eugene.datastructure.list.linkedlist.singlelinked;
 
 /**
  * 单向链表节点

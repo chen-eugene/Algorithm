@@ -1,4 +1,4 @@
-package com.eugene.datastructure.seqlist;
+package com.eugene.datastructure.list.seqlist;
 
 public class SeqList<T> implements ISeqList<T> {
 

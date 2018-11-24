@@ -1,6 +1,6 @@
-package com.eugene.datastructure.linkedlist.doublelinked;
+package com.eugene.datastructure.list.linkedlist.doublelinked;
 
-import com.eugene.datastructure.linkedlist.ILinkedList;
+import com.eugene.datastructure.list.linkedlist.ILinkedList;
 
 /**
  * 循环双链表,带空头结点(不含数据),循环链表可以不需要尾部指针

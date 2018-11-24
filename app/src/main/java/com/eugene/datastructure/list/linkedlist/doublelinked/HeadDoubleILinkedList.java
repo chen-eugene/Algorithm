@@ -1,6 +1,6 @@
-package com.eugene.datastructure.linkedlist.doublelinked;
+package com.eugene.datastructure.list.linkedlist.doublelinked;
 
-import com.eugene.datastructure.linkedlist.ILinkedList;
+import com.eugene.datastructure.list.linkedlist.ILinkedList;
 
 /**
  * 双链表的实现,带头结点(不带数据)的双链表,为了更高的效率该类包含指向尾部的指针tail

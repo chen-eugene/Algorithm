@@ -1,6 +1,6 @@
 package com.eugene.datastructure.stack;
 
-import com.eugene.datastructure.linkedlist.singlelinked.SNode;
+import com.eugene.datastructure.list.linkedlist.singlelinked.SNode;
 
 /**
  * 栈的链式实现  链表不含头结点

@@ -217,9 +217,10 @@ public class Sort {
     }
 
 
-    /***************************线性时间比较类排序************************
+    /***************************线性时间比较类排序************************/
 
-     /**
+    //region 计数排序
+    /**
      * 计数排序
      */
     public static void countingSort(int[] arr) {
@@ -252,11 +253,11 @@ public class Sort {
             }
         }
     }
+    //endregion
 
+    //region 桶排序
     /**
      * 桶排序
-     *
-     * @param arr
      */
     public static void bucketSort(int[] arr) {
 
@@ -299,14 +300,10 @@ public class Sort {
             }
         }
     }
-
-    private static int[] append(int[] arr, int value) {
-        arr = Arrays.copyOf(arr, arr.length + 1);
-        arr[arr.length - 1] = value;
-        return arr;
-    }
+    //endregion
 
 
+    //region 基数排序
     /**
      * 基数排序适用于：
      * (1)数据范围较小，建议在小于1000
@@ -369,6 +366,12 @@ public class Sort {
         }
 
     }
+    //endregion
 
+    private static int[] append(int[] arr, int value) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = value;
+        return arr;
+    }
 
 }

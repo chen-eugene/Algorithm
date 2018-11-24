@@ -1,4 +1,4 @@
-package com.eugene.datastructure.linkedlist.doublelinked;
+package com.eugene.datastructure.list.linkedlist.doublelinked;
 
 public class DNode<T> {
 
