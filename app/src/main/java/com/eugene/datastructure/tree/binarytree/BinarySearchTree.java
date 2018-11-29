@@ -9,10 +9,87 @@ import com.eugene.datastructure.tree.ITree;
  */
 public class BinarySearchTree<T extends Comparable> implements ITree<T> {
 
-    private BinaryNode<T> root;
+    protected BinaryNode<T> root;
 
     public BinarySearchTree() {
         root = null;
+    }
+
+    /**
+     * 根据先根和中根遍历算法构造二叉树
+     *
+     * @param preList  先根遍历次序数组
+     * @param inList   中根遍历次序数组
+     * @param preStart 先根遍历起始角标
+     * @param preEnd   先根遍历结束角标
+     * @param inStart
+     * @param inEnd
+     * @return 返回根结点
+     */
+    public BinaryNode<T> createBinarySearchTreeByPreIn(T[] preList, T[] inList, int preStart, int preEnd, int inStart, int inEnd) {
+        //preList[preStart]必须根结点数据,创建根结点root
+        //先根遍历起始结点为根结点
+        BinaryNode<T> p = new BinaryNode<>(preList[preStart], null, null);
+        //如果没有其他元素,就说明结点已构建完成
+        if (preStart == preEnd && inStart == inEnd)
+            return p;
+
+        //找出中根次序的根结点下标root
+        int rootIndex = 0;
+
+        for (rootIndex = inStart; rootIndex < inEnd; rootIndex++) {
+            //根据先根遍历的起始结点找出中根遍历中的根结点
+            if (preList[preStart].compareTo(inList[rootIndex]) == 0)
+                break;
+        }
+
+        //获取左子树的长度
+        int leftLen = rootIndex - inStart;
+        //获取右子树的长度
+        int rightLen = inEnd - rootIndex;
+
+        //递归构建左子树
+        if (leftLen > 0) {
+            //左子树的先根序列：preList[1] , ... , preList[i]
+            //左子树的中根序列：inList[0] , ... , inList[i-1]
+            p.left = createBinarySearchTreeByPreIn(preList, inList, preStart + 1, preStart + leftLen, inStart, rootIndex - 1);
+        }
+
+        //递归构建右子树
+        if (rightLen > 0) {
+            //右子树的先根序列：preList[i+1] , ... , preList[n-1]
+            //右子树的中根序列：inList[i+1] , ... , inList[n-1]
+            p.right = createBinarySearchTreeByPreIn(preList, inList, preStart + leftLen + 1, preEnd, rootIndex + 1, inEnd);
+        }
+
+        return p;
+    }
+
+    public BinaryNode<T> createBinarySearchTreeByPostIn(T[] postList, T[] inList, int postStart, int postEnd, int inStart, int inEnd) {
+        //构建根结点
+        BinaryNode<T> p = new BinaryNode<>(postList[postEnd], null, null);
+
+        if (postStart == postEnd && inStart == inEnd)
+            return p;
+
+        int rootIndex = 0;
+
+        for (rootIndex = inStart; rootIndex < inEnd; rootIndex++) {
+            //找到中根遍历的根结点位置
+            if (inList[rootIndex].compareTo(postList[postEnd]) == 0)
+                break;
+        }
+
+        int leftLen = rootIndex - inStart;
+        int rightLen = inEnd - rootIndex;
+
+        if (leftLen > 0)
+            p.left = createBinarySearchTreeByPostIn(postList, inList, postStart, postStart + leftLen - 1, inStart, inEnd - 1);
+
+        if (rightLen > 0)
+            p.right = createBinarySearchTreeByPostIn(postList, inList, postStart + leftLen, postEnd - 1, rootIndex + 1, inEnd);
+
+        return p;
     }
 
     @Override
@@ -44,6 +121,8 @@ public class BinarySearchTree<T extends Comparable> implements ITree<T> {
 
     /**
      * 递归遍历层数，返回最大的层数
+     * 高度是指当前结点到叶子结点的最长路径
+     * 深度则是指从根结点到当前结点的最大路径
      */
     private int height(BinaryNode node) {
         if (node == null)
@@ -268,6 +347,7 @@ public class BinarySearchTree<T extends Comparable> implements ITree<T> {
     }
     //endregion
 
+    //region 层次遍历
     @Override
     public String levelOrder() {
         StringBuilder sb = new StringBuilder();
@@ -291,6 +371,7 @@ public class BinarySearchTree<T extends Comparable> implements ITree<T> {
         }
         return sb.toString();
     }
+    //endregion
 
     //region 插入操作
     @Override
@@ -409,15 +490,55 @@ public class BinarySearchTree<T extends Comparable> implements ITree<T> {
     }
     //endregion
 
+    //region 查找结点
     @Override
     public BinaryNode findNode(T data) {
-        return null;
+        return findNode(data, root);
     }
 
+    /**
+     * 查找结点递归实现
+     */
+    private BinaryNode findNode(T data, BinaryNode node) {
+        //递归结束条件
+        if (data == null || node == null)
+            return null;
+
+        int result = data.compareTo(node.data);
+
+        if (result < 0)
+            return findNode(data, node.left);
+        else if (result > 0)
+            return findNode(data, node.right);
+        else {
+            return node;
+        }
+    }
+    //endregion
+
+    //region 查找元素是否存在
     @Override
     public boolean contains(T data) throws Exception {
-        return false;
+        return contains(data,root);
     }
+
+    /**
+     * 查找元素是否存在递归实现
+     */
+    private boolean contains(T data, BinaryNode node) {
+        if (data == null || node == null)
+            return false;
+
+        int result = data.compareTo(node.data);
+
+        if (result < 0)
+            return contains(data, node.left);
+        else if (result > 0)
+            return contains(data, node.right);
+        else
+            return true;
+    }
+    //endregion
 
     @Override
     public void clear() {
