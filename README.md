@@ -1,4 +1,4 @@
-**《数据结构与算法（Java语言描述）》、《算法4》**
+**《数据结构与算法（Java语言描述）》、《算法4》、《Java常用算法手册》**
 
 #### 1、数据结构基本术语：
  
@@ -26,6 +26,8 @@
 **[树](https://github.com/chen-eugene/Algorithm/blob/master/file/%E6%A0%91.md)**
 
 **[二叉树](https://github.com/chen-eugene/Algorithm/blob/master/file/%E4%BA%8C%E5%8F%89%E6%A0%91.md)**
+
+**[常用算法思想]()**
   
   ![时间复杂度](https://github.com/chen-eugene/Algorithm/blob/master/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20181127230505.jpg)
    
