@@ -97,11 +97,11 @@ public class AVLTree<T extends Comparable> implements ITree<T> {
     private String postOrder(AVLNode<T> node) {
         StringBuilder sb = new StringBuilder();
         if (node != null) {
-            sb.append(node.left.data);
+            sb.append(node.right.data);
 
             sb.append(node.left.data);
 
-            sb.append(node.data);
+            sb.append(node.data).append(",");
         }
         return sb.toString();
     }
